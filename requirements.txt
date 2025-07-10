@@ -1,0 +1,37 @@
+# ModernGL関連
+moderngl==5.12.0
+moderngl-window==3.1.1
+glfw==2.6.0
+PyOpenGL==3.1.7
+PyOpenGL-accelerate==3.1.7
+pyglet==2.0.10
+
+# 画像処理・AI
+opencv-python==4.9.0.80
+mediapipe==0.10.14
+numpy==1.26.4
+pillow==10.3.0
+
+# 数学・計算
+glm-py==0.4.0
+scipy==1.11.4
+numba==0.58.1
+
+# GUI・音響
+sounddevice==0.4.6
+pygame==2.5.2
+
+# ユーティリティ
+psutil==5.9.8
+tqdm==4.66.1
+rich==13.7.1
+typing-extensions==4.12.2
+
+# 開発・デバッグ
+pytest==7.4.4
+black==23.11.0
+flake8==6.0.0
+
+# オプション（パフォーマンス向上）
+tensorflow==2.15.0
+torch==2.1.0 

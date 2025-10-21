@@ -10,54 +10,78 @@
     "orthographic_height": 20.0,
     "fovy": 78.0,
     "near_plane": -10.0,
-    "far_plane": 40.0,
+    "far_plane": 35.0,
     "eye": [0.0, 0.0, 15.0],
     "target": [0.0, 0.0, 0.0],
     "up": [0.0, 1.0, 0.0]
   },
   "face_detection": {
     "yaw_threshold": 20.0,
-    "pitch_threshold": 15.0
+    "pitch_threshold": 15.0,
+    "confidence_threshold": 0.5,
+    "smoothing_factor": 0.3,
+    "enable_enhanced_detection": true,
+    "gaze_interaction": {
+      "enable": true,
+      "look_threshold_degrees": 15.0,
+      "hold_time_for_activation": 2.0,
+      "cursor_size": 0.1,
+      "cursor_color": [1.0, 1.0, 0.0]
+    }
   },
   "lighting": {
-    "smoothing": 0.05
+    "smoothing": 0.05,
+    "face_direction_influence": 0.8,
+    "dynamic_response_speed": 2.0
   },
   "art": {
     "sphere_count": 250,
-    "sphere_resolution": 16,
-    "sphere_min_size": 0.1,
-    "sphere_max_size": 0.2,
-    "plane_z": 0.0,
-    "grid_spacing": 1.0,
-    "texture_path": "textures/star_texture.jpg"
+    "sphere_resolution": 32,
+    "sphere_min_size": 0.2,
+    "sphere_max_size": 0.5,
+    "texture_paths": [
+      "textures/star_texture1.jpg",
+      "textures/star_texture2.jpg",
+      "textures/star_texture.jpg"
+    ],
+    "normal_map_paths": [
+      "textures/default_normal.png"
+    ],
+    "env_map_path": "textures/envmap.hdr"
   },
   "interaction": {
     "hover_distance": 1.0,
     "hover_scale": 1.5,
+    "touch_cooldown": 0.1,
     "chain_reaction_radius": 2.5,
     "chain_reaction_delay": 0.05,
-    "chain_reaction_max_depth": 3
+    "chain_reaction_max_depth": 5
   },
   "ui": {
-    "show_depth_indicator": true
+    "show_depth_indicator": true,
+    "show_gesture_hints": true,
+    "hint_display_time": 3.0,
+    "gesture_success_feedback": true
   },
   "starfield": {
-    "star_count": 2000,
-    "star_speed": 0.5,
+    "star_count": 4000,
+    "star_speed": 0.7,
     "star_max_size": 3.0
   },
   "particles": {
-    "count": 10000,
-    "lifespan": 1.5,
+    "count": 20000,
+    "lifespan": 2.0,
     "speed": 4.0,
-    "gravity": -2.0,
-    "emit_count": 50
+    "gravity": -1.5,
+    "emit_count": 100
   },
   "mediapipe": {
-    "model_complexity": 0,
+    "model_complexity": 1,
     "min_detection_confidence": 0.5,
     "min_tracking_confidence": 0.5,
-    "fingertip_indices": [4, 8, 12, 16, 20]
+    "fingertip_indices": [4, 8, 12, 16, 20],
+    "thumb_tip": 4,
+    "index_tip": 8
   },
   "hand_tracking": {
     "world_height": 9.0,
@@ -66,5 +90,199 @@
     "z_offset": 0.5,
     "hand_indicator_size": 0.12,
     "hand_indicator_count": 10
+  },
+  "hand_indicators": {
+    "base_color": [0.0, 1.0, 1.0],
+    "pulse_speed": 3.0,
+    "pulse_intensity": 0.8,
+    "trail_length": 20,
+    "trail_fade_speed": 0.95,
+    "glow_radius": 0.3,
+    "visibility_enhancement": true
+  },
+  "dynamic_materials": {
+    "enable_material_animation": true,
+    "roughness_variation": 0.3,
+    "metallic_variation": 0.5,
+    "emission_variation": 0.5,
+    "animation_speed": 0.8,
+    "interaction_response": true
+  },
+  "advanced_physics": {
+    "enable_gravity_wells": true,
+    "gravity_well_strength": 15.0,
+    "gravity_well_radius": 8.0,
+    "gesture_activation_distance": 0.1
+  },
+  "post_processing": {
+    "enable_bloom": true,
+    "bloom_threshold": 0.8,
+    "bloom_intensity": 1.2,
+    "bloom_blur_passes": 5
+  },
+  "debug_visualization": {
+    "show_performance_stats": true
+  },
+  "audio_system": {
+    "enabled": true,
+    "master_volume": 0.7,
+    "sound_effects": {
+      "sphere_pop": {
+        "enabled": true,
+        "volume": 0.8,
+        "pitch_variation": true,
+        "color_based_pitch": true
+      },
+      "chain_reaction": {
+        "enabled": true,
+        "volume": 0.6,
+        "depth_volume_reduction": 0.1
+      },
+      "explosion": {
+        "enabled": true,
+        "volume": 0.9,
+        "intensity_scaling": true
+      },
+      "gesture_success": {
+        "enabled": true,
+        "volume": 0.5,
+        "chime_type": "harmonic"
+      }
+    },
+    "procedural_generation": {
+      "use_procedural": true,
+      "sample_rate": 22050,
+      "bit_depth": 16
+    },
+    "external_files": {
+      "audio_directory": "audio/",
+      "fallback_to_procedural": true
+    }
+  },
+  "enhanced_gestures": {
+    "enabled": true,
+    "smoothing_frames": 5,
+    "confidence_threshold": 0.7,
+    "gestures": {
+      "palm_summon": {
+        "enabled": true,
+        "openness_threshold": 0.8,
+        "cooldown_time": 1.0,
+        "spawn_count_multiplier": 10,
+        "effect_radius": 2.0,
+        "visual_feedback": true
+      },
+      "finger_control": {
+        "enabled": true,
+        "finger_count_effects": {
+          "1": "precision_pop",
+          "2": "small_explosion", 
+          "3": "chain_reaction",
+          "4": "time_slow",
+          "5": "screen_reset"
+        },
+        "hold_time_for_activation": 0.5,
+        "visual_number_display": true
+      },
+      "hand_rotation": {
+        "enabled": true,
+        "rotation_threshold": 30.0,
+        "orbital_effect_strength": 1.5,
+        "color_change_speed": 2.0,
+        "special_angles": [90, 180, 270, 360],
+        "special_effect_intensity": 2.0
+      },
+      "hand_distance": {
+        "enabled": true,
+        "attraction_distance": 0.3,
+        "repulsion_distance": 0.8,
+        "force_strength": 3.0,
+        "visual_force_lines": true
+      },
+      "precision_pinch": {
+        "enabled": true,
+        "pinch_threshold": 0.05,
+        "grab_duration": 2.0,
+        "throw_velocity_multiplier": 1.5,
+        "grab_highlight_color": [1.0, 0.8, 0.0]
+      },
+      "gaze_interaction": {
+        "enabled": true,
+        "look_activation_time": 2.0,
+        "gaze_radius": 1.0,
+        "highlight_intensity": 1.5,
+        "auto_pop_enabled": true
+      }
+    },
+    "combination_gestures": {
+      "enabled": false,
+      "face_plus_hand": {
+        "enabled": false,
+        "combinations": [
+          {
+            "name": "telekinesis",
+            "face_direction": "center",
+            "hand_gesture": "precision_pinch",
+            "effect": "remote_control"
+          }
+        ]
+      }
+    },
+    "learning_system": {
+      "enabled": false,
+      "difficulty_levels": ["beginner", "intermediate", "advanced"],
+      "auto_progression": true,
+      "success_threshold": 0.8
+    }
+  },
+  "gameplay_elements": {
+    "scoring_system": {
+      "enabled": false,
+      "points_per_sphere": 10,
+      "combo_multiplier": 1.5,
+      "time_bonus": true
+    },
+    "challenges": {
+      "enabled": false,
+      "daily_challenges": true,
+      "achievement_system": true
+    }
+  },
+  "performance": {
+    "adaptive_quality": {
+      "enabled": true,
+      "target_fps": 60,
+      "quality_levels": ["low", "medium", "high", "ultra"],
+      "auto_adjust": true
+    },
+    "memory_management": {
+      "particle_pool_size": 20000,
+      "texture_compression": true,
+      "garbage_collection_interval": 30.0
+    }
+  },
+  "accessibility": {
+    "high_contrast_mode": false,
+    "reduced_motion": false,
+    "audio_cues_only": false,
+    "gesture_simplification": false
+  },
+  "experimental": {
+    "ai_integration": {
+      "enabled": false,
+      "openai_api_key": "",
+      "voice_commands": false,
+      "adaptive_difficulty": false
+    },
+    "multi_user": {
+      "enabled": false,
+      "max_users": 4,
+      "network_port": 8080
+    },
+    "data_visualization": {
+      "enabled": false,
+      "supported_formats": ["csv", "json", "xlsx"],
+      "auto_mapping": true
+    }
   }
 }
